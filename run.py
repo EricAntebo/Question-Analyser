@@ -26,3 +26,46 @@ for answer_list in data:
         x[keys[index]].append(answer)
         index += 1
 
+user_answers = {}
+
+
+def question_user(question):
+    """
+    Asks the user all the questions from the form
+    """
+    while True:
+        if question == "Do your parents live together?":
+            if user_answers["Do you have two parents?"] == "No":
+                user_answers[question] = ""
+                break
+        elif question == "Are your sibling(s) older than you?":
+            if user_answers["Do you have sibling(s)?"] == "No":
+                user_answers[question] = ""
+                break
+        user_answer = input(f"{question} (Yes/No)\n")
+        if validate_questions(user_answer):
+            user_answers[question] = user_answer
+            break
+
+
+def validate_questions(value):
+    """
+    Validates the questions from question_user()
+    """
+    try:
+        if value != "Yes" and value != "No":
+            raise ValueError(
+                f"You must answer with either Yes or No, you answered {value}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
+
+
+for question in x:
+    value = x[question]
+    if question != "Tidstämpel":
+        question_user(question)
+
