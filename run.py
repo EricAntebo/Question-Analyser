@@ -64,6 +64,17 @@ def validate_questions(value):
     return True
 
 
+print("Welcome to the Question Analyser!\n")
+sleep(1)
+print("You will be asked a few questions.")
+print("After answering the questions,")
+print("your answers will be compared to other peoples answers.")
+sleep(2)
+print("--------------------------------------------\n")
+if input("Would you like to begin? (Yes/No)\n") != "Yes":
+    exit()
+
+
 for question in x:
     value = x[question]
     if question != "Tidstämpel":
