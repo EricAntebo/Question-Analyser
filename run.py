@@ -64,6 +64,14 @@ def validate_questions(value):
     return True
 
 
+def get_question_percentage(question_answers):
+    """
+    Gets the percentage of people that have answered yes on a given question
+    """
+    yes_answers = question_answers.count("Yes")
+    return int(yes_answers / len(question_answers) * 100)
+
+
 print("Welcome to the Question Analyser!\n")
 sleep(1)
 print("You will be asked a few questions.")
@@ -74,9 +82,26 @@ print("--------------------------------------------\n")
 if input("Would you like to begin? (Yes/No)\n") != "Yes":
     exit()
 
-
 for question in x:
     value = x[question]
     if question != "Tidstämpel":
         question_user(question)
+
+print("\n--------------------------------------------")
+
+answer_percentage = 0
+for question in user_answers:
+    user_answer = user_answers[question]
+    question_percentage = get_question_percentage(x[question])
+    print(f"Question: {question}")
+    print(f"Answered with yes: {question_percentage}%")
+    print(f"Answered with no: {100-question_percentage}%")
+    if user_answer == "Yes":
+        print(f"Your answer: {user_answer} | {question_percentage}%\n")
+        answer_percentage += question_percentage
+    else:
+        print(f"Your answer: {user_answer} | {100-question_percentage}%\n")
+        answer_percentage += 100-question_percentage
+
+print(f"Your average %: {int(answer_percentage / len(user_answers))}%")
 
