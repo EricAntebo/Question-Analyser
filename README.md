@@ -73,4 +73,3 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 ## Credits
 
 * Code Institute for the deployment terminal
-* 
