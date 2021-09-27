@@ -12,5 +12,9 @@ Using question analyser is extremely simple, all you have to do is answer with e
 
 ### Current Features
 
+* Welcome and walkthrough
+  -
+  
+![Welcome and walkthrough image]( "welcome and walkthrough image")
 
 
